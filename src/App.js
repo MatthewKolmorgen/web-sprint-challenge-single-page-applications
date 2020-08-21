@@ -47,7 +47,10 @@ const initialPizza = ([])
 const instialButtonState = true
 
 const App = () => {
-  const [pizza, setPizza] = useState(initialPizza)    
+  const [pizza, setPizza] = useState(initialPizza)
+  const [disabled, setDisabled] = useState(instialButtonState) 
+  const [formErrors, setFormErrors] = useState(errors)
+  const [formValues, setFormValues] = useState(initialFormValues)    
 
   const schema = yup.object().shape({
     name: yup.string().min(2, 'Name must be at least 2 characters'),
@@ -68,8 +71,6 @@ const App = () => {
       })
   }
 
-  const [formValues, setFormValues] = useState(initialFormValues)
-
   const submit = () => {
     const pizza = {
       name: formValues.name.trim(),
@@ -86,8 +87,6 @@ const App = () => {
       setDisabled(!valid)
     })
   }, [formValues])
-
-  const [formErrors, setFormErrors] = useState(errors) 
 
   const inputChange = (name, value) => {
 
@@ -107,8 +106,6 @@ const App = () => {
   const checkboxChange = (name, isChecked) => {
     setFormValues({...formValues, toppings: {...formValues.toppings,[name]: isChecked,}})
   }
-
-  const [disabled, setDisabled] = useState(instialButtonState) 
   
   return (
     <div className='app'>
