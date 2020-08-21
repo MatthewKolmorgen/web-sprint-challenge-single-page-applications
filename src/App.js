@@ -46,7 +46,7 @@ const initialPizza = ([])
 
 const instialButtonState = true
 
-export default function App(){
+const App = () => {
   const [pizza, setPizza] = useState(initialPizza)    
 
   const schema = yup.object().shape({
@@ -109,7 +109,7 @@ export default function App(){
   }
 
   const [disabled, setDisabled] = useState(instialButtonState) 
-
+  
   return (
     <div className='app'>
       <Header />
@@ -130,3 +130,4 @@ export default function App(){
     </div>
   );
 }
+export default App
